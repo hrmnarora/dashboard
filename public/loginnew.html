@@ -77,13 +77,9 @@
                 <a
                   href="#"
                   @click.prevent="showEmailForm = true"
-                  class="inline-flex w-80 items-center justify-center px-3 py-3  border-gray-300 border  bg-white text-gray-500 hover:border-gray-300 transition-colors hover:text-gray-700 hover:bg-gray-100 border-1 rounded-xl gap-x-3"
+                  class="text-gray-700 hover:underline"
                 >
-                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="email">
-                  <g>
-                    <path d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z" fill="gray"></path>
-                  </g>
-                </svg>
+    
                   <span class="text-md font-normal leading-6">Continue with Email</span>
                 </a>
                 
@@ -92,9 +88,9 @@
               <template x-if="showEmailForm">
                 <!-- Email and password inputs go here -->
                 <form class="flex flex-col  items-center gap-4">
-                  <input type="email" class="inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide   bg-white text-gray-500 border-gray-300 border-1 rounded-xl "   placeholder="enter your Email">
+                  <input type="email" class="inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide   bg-white text-black border-gray-300 border-1 rounded-2xl focus:ring-blue-200 focus:ring-4 no-underline focus:border-blue-400 translate-all"   placeholder="enter your Email">
       
-                  <input type="password" class="inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide   bg-white text-gray-500 border-gray-300 border-1 rounded-xl " placeholder="enter your Password">
+                  <input type="password" class="inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide   bg-white text-gray-500 border-gray-300 border-1 rounded-2xl focus:ring-blue-200 focus:ring-4 no-underline focus:border-blue-400 translate-all" placeholder="enter your Password">
                   <!-- <div class="mt-3 flex flex-col h-fit w-full rounded-xl bg-[#f4f4f4]">
                     <input class="bg-transparent focus:outline-none focus:ring-0 border-none" type="text" placeholder="Name">
                     <div class="bg-white w-full h-[2px]"></div>
@@ -111,11 +107,11 @@
               </template>
             </div>
         
-            <p class="mt-4 text-center text-sm text-gray-900">
+            <p class="mt-4 px-6 text-gray-500 text-center">
               By clicking continue, you agree to our
-              <a class="underline underline-offset-4 hover:text-gray-600" href="/privacy">Privacy Policy.</a>
+              <a class="underline underline-offset-4 hover:text-gray-800" href="/privacy">Privacy Policy.</a>
             </p>
-            <p class="mt-4 text-center text-md text-gray-900">
+            <p class="mt-4 px-6 text-gray-500 text-center">
                 New to codekaro? <a class="underline underline-offset-4 hover:text-gray-600" href="">Join Now</a> 
             </p>
           </div>

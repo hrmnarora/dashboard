@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <h2 class="text-lg font-semibold mb-4">Dynamic Form</h2>
+        <div id="formContainer">
+            <!-- Form inputs will be added dynamically here -->
+        </div>
+        <button id="confirmBtn" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-md">Confirm</button>
+    </div>
+
+    <script>
+        // JavaScript code to handle dynamic form generation
+        document.addEventListener('DOMContentLoaded', function () {
+            const formContainer = document.getElementById('formContainer');
+            const confirmBtn = document.getElementById('confirmBtn');
+            let step = 0; // to keep track of current step
+
+            // Function to create input fields based on step
+            function createInputField(step) {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('placeholder', `Enter ${inputNames[step]}`);
+                input.setAttribute('class', 'mt-2 p-2 border rounded-md w-full');
+                return input;
+            }
+
+            // Array to hold input names
+            const inputNames = ['name', 'email', 'phone', 'address'];
+
+            // Initial step
+            formContainer.appendChild(createInputField(step));
+
+            // Event listener for Confirm button
+            confirmBtn.addEventListener('click', function () {
+                if (step < inputNames.length - 1) {
+                    step++;
+                    formContainer.innerHTML = ''; // Clear previous inputs
+                    formContainer.appendChild(createInputField(step));
+                } else {
+                    // You can submit the form data or perform further actions here
+                    alert('Form submitted!');
+                    // For submitting data to Google Sheets, you need to handle it server-side
+                    // using Google Sheets API and AJAX or form submission
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
