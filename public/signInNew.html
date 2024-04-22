@@ -55,7 +55,7 @@
         <template x-if="!showEmailForm">
         <a
             href="#"
-            class="inline-flex w-80 items-center justify-center px-3 py-3 gap-x-3 font-light tracking-wide transition-colors duration-200 bg-black text-white ring-gray-500 ring-1 rounded-xl   border-neutral-200/70  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:gray-500 focus:shadow-outline"
+            class="inline-flex w-80 items-center justify-center px-3 py-3 gap-x-3 font-light tracking-wide transition-colors duration-200 bg-black text-white rounded-xl     focus:outline-none focus:ring-4 focus:ring-offset-1 focus:gray-500 focus:shadow-outline focus:ring-gray-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -76,9 +76,8 @@
           <a
             href="#"
             @click.prevent="showEmailForm = true"
-            class="text-gray-700 hover:underline"
-          >
-            <span class="text-md font-normal leading-6">Continue with Email</span>
+            class=" flex gap-2 items-center hover:underline text-blue-500">
+              <p class="text-md font-normal leading-6">Continue with Email →</p>
           </a>
           
           
@@ -93,9 +92,14 @@
             
           </a>
            
-            <div class="flex w-full gap-3 items-center justify-between">
-              <button type="submit" class="bg-black w-1/2 text-white py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline">SignUp</button>
-              <button href="#" @click.prevent="showEmailForm = false" class="inline-flex w-1/2 items-center justify-center px-4  font-light tracking-wide border border-gray-300 py-2   bg-white text-gray-500  hover:border-gray-300 transition-colors hover:text-gray-700 hover:bg-gray-100 border-1 rounded-xl">Cancel</button>
+            <div class="flex w-full flex-col gap-3 items-center justify-between">
+              <button type="submit" class="inline-flex w-80 items-center justify-center px-3 py-3 gap-x-3 font-light tracking-wide transition-colors duration-200 bg-black text-white rounded-xl     focus:outline-none focus:ring-4 focus:ring-offset-1 focus:gray-500 focus:shadow-outline focus:ring-gray-500">SignUp</button>
+              <a href="" @click.prevent="showEmailForm = false"
+                  class=" flex gap-2 items-center hover:underline text-blue-500">
+                  <p class="text-md font-normal leading-6">← Other Login Options</p>
+                </a>
+              
+              
             </div>
           </form>
         </template>
