@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Include the Alpine library on your page -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <!-- Include the TailwindCSS library on your page -->
+    <link href="css/output.css" rel="stylesheet" />
+</head>
+
+<body class="relative h-full font-geist">
+    <!-- Header Section -->
+    <header id="sticky-header"
+        class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-400 border-opacity-20">
+        <div class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl">
+            <div class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left">
+                <a href="/"
+                    class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round"
+                        style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16"
+                        aria-label="Vercel logo">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path>
+                    </svg>
+                </a>
+
+            </div>
+
+            <div class="relative">
+
+                <a href="" class="btn border px-4 py-3 rounded-lg text-sm">Signup</a>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </header>
+
+    <main class="min-h-screen items-center flex flex-col justify-center align-middle px-6 py-12 lg:px-8 z-100 relative">
+        <div class="w-[420px] flex justify-center bg-white flex-col gap-4 items-center">
+
+            <form class="w-full  py-7 rounded-xl flex items-center flex-col justify-center">
+                <h2 id="formTitle" class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Enter
+                    Your Name Please</h2>
+                <div id="formContainer" class="flex mt-5 flex-col items-center gap-4 w-full">
+
+                    <input type="text" id="nameInput"
+                        class="inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide transition-all  bg-white text-black border-gray-300 border-1 rounded-2xl focus:ring-blue-200 focus:ring-4 no-underline focus:border-blue-400"
+                        placeholder="Name">
+                </div>
+                <button type="button" id="confirmBtn"
+                    class="bg-black w-80 mt-5 text-white py-3 px-4 rounded-2xl focus:outline-none focus:shadow-outline active:ring-gray-500 active:ring-4 transition-all ring-offset-1">Confirm</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formTitle = document.getElementById('formTitle');
+            const formContainer = document.getElementById('formContainer');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const nameInput = document.getElementById('nameInput');
+            let step = 1; // to keep track of current step
+
+            // Function to create input fields based on step
+            function createInputField(step) {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('placeholder', `Enter your ${inputNames[step]}`);
+                input.setAttribute('class', 'inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide transition-all  bg-white text-black border-gray-300 border-1 rounded-xl focus:ring-blue-200 focus:ring-4 no-underline focus:border-blue-400');
+                return input;
+            }
+
+            // Array to hold input names
+            const inputNames = ['name', 'email', 'profession', 'goal']; // Adjust as needed
+
+            // Event listener for Confirm button
+            confirmBtn.addEventListener('click', function () {
+                if (step == 1) {
+                    if (nameInput.value.trim() !== '') {
+                        formTitle.textContent = (`Hey ${nameInput.value.trim()}, please enter your ${inputNames[step]}`);
+                        formContainer.innerHTML = '';
+                        formContainer.appendChild(createInputField(step));
+                        step++;
+                    } else {
+                        alert('Please enter your name');
+                    }
+                } else if (step == 2) {
+                    formTitle.textContent = "Choose Your Current Profession"
+                    formContainer.innerHTML = `<div x-data="{
+    radioGroupSelectedValue: null,
+    radioGroupOptions: [
+        {
+            title: 'I am a Student',
+            value: 'student'
+        },
+        {
+            title: 'I am an Employee',
+            value: 'employee'
+        }
+    ]
+}" class="space-y-3">
+    <template x-for="(option, index) in radioGroupOptions" :key="index">
+        <label @click="radioGroupSelectedValue=option.value" class="flex items-start p-5 w-80 space-x-3 bg-white border rounded-xl  hover:bg-gray-50 border-gray-200">
+            <input type="radio" name="radio-group" :value="option.value" class="text-gray-900 translate-y-px focus:ring-gray-700" />
+            <span class="relative flex flex-col text-left space-y-1.5 leading-none">
+                <span x-text="option.title" class="font-semibold ml-3"></span>
+            </span>
+        </label>
+    </template>
+</div>`;
+                    step++
+                } else if (step == 3) {
+                    formContainer.innerHTML = '';
+                    formTitle.textContent = `Whats your goal in life?:`;
+                    formContainer.appendChild(createInputField(step));
+                    step++
+                } else if (step == 4) {
+                    window.location.href = "/";
+                    alert('Form submitted!');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
