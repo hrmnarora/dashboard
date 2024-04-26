@@ -37,11 +37,11 @@
         </div>
         </div>
     </header>
-
+    
     <main class="min-h-screen items-center flex flex-col justify-center align-middle px-6 py-12 lg:px-8 z-100 relative">
         <div class="w-[420px] flex justify-center bg-white flex-col gap-4 items-center">
 
-            <form class="w-full  py-7 rounded-xl flex items-center flex-col justify-center">
+            <form name="google-sheet" method="post" action="https://script.google.com/macros/s/AKfycbxHadykXch06Jt4ksrsbkKzqbHJ2I8rT08W0Yg8fgQkM7nWdfYy5VvjUkXjChbN1We1/exec" class="w-full  py-7 rounded-xl flex items-center flex-col justify-center">
                 <h2 id="formTitle" class="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Enter
                     Your Name Please</h2>
                 <div id="formContainer" class="flex mt-5 flex-col items-center gap-4 w-full">
@@ -57,6 +57,18 @@
     </main>
 
     <script>
+
+        // const scriptURL = 'https://script.google.com/macros/s/AKfycbwQftwsskbZt6xhBp3dA3pHO_MHDLamZOyyU-9Z7dvZ_ZSNyxfe9dogF2-uy-PCnx0A8Q/exec'
+        // const form = document.forms['google-sheet']
+      
+        // form.addEventListener('submit', e => {
+        //   e.preventDefault()
+        //   fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        //     .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        //     .catch(error => console.error('Error!', error.message))
+        // })
+
+
         document.addEventListener('DOMContentLoaded', function () {
             const formTitle = document.getElementById('formTitle');
             const formContainer = document.getElementById('formContainer');
@@ -68,6 +80,7 @@
             function createInputField(step) {
                 const input = document.createElement('input');
                 input.setAttribute('type', 'text');
+                input.setAttribute('name',inputNames[step] )
                 input.setAttribute('placeholder', `Enter your ${inputNames[step]}`);
                 input.setAttribute('class', 'inline-flex w-80 items-center justify-center px-3 py-3  font-light tracking-wide transition-all  bg-white text-black border-gray-300 border-1 rounded-xl focus:ring-blue-200 focus:ring-4 no-underline focus:border-blue-400');
                 return input;
@@ -118,7 +131,7 @@
                     formContainer.appendChild(createInputField(step));
                     step++
                 } else if (step == 4) {
-                    window.location.href = "/";
+                    document.querySelector('form').submit();
                     alert('Form submitted!');
                 }
             });
